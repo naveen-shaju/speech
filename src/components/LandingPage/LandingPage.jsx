@@ -1,6 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function LandingPage({ onBookAppointment }) {
+  const [activeTab, setActiveTab] = useState('services');
+
+  useEffect(() => {
+    const sections = ['services', 'about', 'contact'];
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
+      });
+    };
+  }, []);
+
   return (
     <div className="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex flex-col">
       {/* TopNavBar */}
@@ -13,13 +45,37 @@ export default function LandingPage({ onBookAppointment }) {
           />
         </div>
         <nav className="hidden md:flex gap-8 items-center">
-          <a className="font-title-lg text-title-lg text-primary font-bold border-b-2 border-primary pb-1" href="#services">
+          <a
+            onClick={() => setActiveTab('services')}
+            className={`font-title-lg text-title-lg pb-1 transition-all ${
+              activeTab === 'services'
+                ? 'text-primary font-bold border-b-2 border-primary'
+                : 'text-secondary hover:text-primary'
+            }`}
+            href="#services"
+          >
             Services
           </a>
-          <a className="font-title-lg text-title-lg text-secondary hover:text-primary transition-colors" href="#about">
+          <a
+            onClick={() => setActiveTab('about')}
+            className={`font-title-lg text-title-lg pb-1 transition-all ${
+              activeTab === 'about'
+                ? 'text-primary font-bold border-b-2 border-primary'
+                : 'text-secondary hover:text-primary'
+            }`}
+            href="#about"
+          >
             Expertise
           </a>
-          <a className="font-title-lg text-title-lg text-secondary hover:text-primary transition-colors" href="#contact">
+          <a
+            onClick={() => setActiveTab('contact')}
+            className={`font-title-lg text-title-lg pb-1 transition-all ${
+              activeTab === 'contact'
+                ? 'text-primary font-bold border-b-2 border-primary'
+                : 'text-secondary hover:text-primary'
+            }`}
+            href="#contact"
+          >
             Contact
           </a>
         </nav>
