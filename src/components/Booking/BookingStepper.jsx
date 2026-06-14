@@ -161,11 +161,11 @@ export default function BookingStepper({ onExit }) {
     <div className="bg-background text-on-background font-body-md min-h-screen flex flex-col overflow-x-hidden">
       {/* Top Navigation Header */}
       <header className="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-md shadow-sm border-b border-surface-variant/20">
-        <div className="flex items-center ml-2 md:ml-10">
+        <div className="flex items-center">
           <img
             alt="Speech & Development Care Center Logo"
-            className="h-15 md:h-20 w-auto object-contain"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8UoJXK8wYReH6iHeAGNksuALmcosJxMjwKMzWMv5kKBkJsZicB_e40DJitU1bM12rEwETo5nDF8YKdEjCWh0gNkC11pxVHehOkePqqD6fHex9WT5fyYlpfBfZKTa4tpDXCmWCmfDKK4ekkFTWTWsKQ3kU-3wdIv1r0cBno5GXOWYDWMumIqogMOoFuxzea2goSTAvKQ5r43Xlw_rwa-fO8lljKz0hD37OzpFrq2f9JOgfpXfErnRqnCpWjybLj3en1PjOzHzb_vE"
+            className="h-16 w-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpwM6eVddPWz0aabKbrlqkFPFE6Bgn525y37fUsYGWZk4RRWxw2dqxiu6nCPPydUMTyvjvC3Gm8Wpb2y_tiM8MjVGMpxDxJ9iNsbWwS1JpZBJ3EKg4U2rjWDJpbUQffOZPgWlHgl7tYrUkUGYlwyatY8FAgif809oJ7bK96UDHJZbJgVUEwl3Q1uNOa-xpLZ9kl_Tb_DK8eeFi9DwJuumXbQ8wKRjn-b4X5Fr1hVHT2i95RFm1lHFbbF5xi7TR0NDhanc2iVgv9-w=w512"
           />
         </div>
         <button
@@ -703,7 +703,7 @@ export default function BookingStepper({ onExit }) {
               <img
                 alt="Speech & Development Care Center Logo"
                 className="h-12 w-auto object-contain"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8UoJXK8wYReH6iHeAGNksuALmcosJxMjwKMzWMv5kKBkJsZicB_e40DJitU1bM12rEwETo5nDF8YKdEjCWh0gNkC11pxVHehOkePqqD6fHex9WT5fyYlpfBfZKTa4tpDXCmWCmfDKK4ekkFTWTWsKQ3kU-3wdIv1r0cBno5GXOWYDWMumIqogMOoFuxzea2goSTAvKQ5r43Xlw_rwa-fO8lljKz0hD37OzpFrq2f9JOgfpXfErnRqnCpWjybLj3en1PjOzHzb_vE"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpwM6eVddPWz0aabKbrlqkFPFE6Bgn525y37fUsYGWZk4RRWxw2dqxiu6nCPPydUMTyvjvC3Gm8Wpb2y_tiM8MjVGMpxDxJ9iNsbWwS1JpZBJ3EKg4U2rjWDJpbUQffOZPgWlHgl7tYrUkUGYlwyatY8FAgif809oJ7bK96UDHJZbJgVUEwl3Q1uNOa-xpLZ9kl_Tb_DK8eeFi9DwJuumXbQ8wKRjn-b4X5Fr1hVHT2i95RFm1lHFbbF5xi7TR0NDhanc2iVgv9-w=w512"
               />
             </div>
           </div>
