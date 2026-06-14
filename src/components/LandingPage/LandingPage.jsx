@@ -201,7 +201,7 @@ export default function LandingPage({ onBookAppointment }) {
               </div>
               
               {/* Trust/Credibility Badges */}
-              <div className="flex flex-wrap items-center justify-start gap-x-2 md:gap-x-6 gap-y-1 md:gap-y-3 pt-4 sm:pt-6 border-t border-surface-variant/20 text-on-surface-variant text-[8px] sm:text-xs md:text-sm">
+              <div className="flex flex-row flex-nowrap items-center justify-between sm:justify-start gap-x-1 sm:gap-x-6 pt-4 sm:pt-6 border-t border-surface-variant/20 text-on-surface-variant text-[8px] sm:text-xs md:text-sm w-full">
                 <div className="flex items-center gap-1 sm:gap-2">
                   <span className="material-symbols-outlined text-primary text-[12px] sm:text-[18px] md:text-[20px]">workspace_premium</span>
                   <span className="font-semibold text-on-surface">ASHA Certified</span>
@@ -227,20 +227,20 @@ export default function LandingPage({ onBookAppointment }) {
               </div>
               
               {/* Floating Card 1: 1200+ Families */}
-              <div className="absolute -bottom-3 -left-3 md:-bottom-10 md:-left-[120px] glass-card p-1.5 md:p-5 rounded-lg md:rounded-xl block max-w-[80px] sm:max-w-[100px] md:max-w-[240px] hover:-translate-y-1 transition-transform duration-300">
+              <div className="absolute -bottom-3 -left-3 md:-bottom-10 md:-left-[120px] glass-card p-2 md:p-5 rounded-lg md:rounded-xl block max-w-[110px] md:max-w-[240px] scale-[0.65] md:scale-100 origin-bottom-left hover:-translate-y-1 transition-transform duration-300">
                 <div className="hidden md:flex -space-x-1.5 md:-space-x-2.5 overflow-hidden mb-1.5 md:mb-3">
                   <div className="inline-flex h-4 w-4 md:h-8 md:w-8 rounded-full bg-primary-fixed-dim text-on-primary-fixed-variant items-center justify-center text-[6px] md:text-[10px] font-bold ring-1 md:ring-2 ring-white">ES</div>
                   <div className="inline-flex h-4 w-4 md:h-8 md:w-8 rounded-full bg-secondary-fixed text-on-secondary-fixed items-center justify-center text-[6px] md:text-[10px] font-bold ring-1 md:ring-2 ring-white">AM</div>
                   <div className="inline-flex h-4 w-4 md:h-8 md:w-8 rounded-full bg-tertiary-fixed-dim text-on-tertiary-fixed-variant items-center justify-center text-[6px] md:text-[10px] font-bold ring-1 md:ring-2 ring-white">KP</div>
                   <div className="inline-flex h-4 w-4 md:h-8 md:w-8 rounded-full bg-primary text-on-primary items-center justify-center text-[6px] md:text-[10px] font-bold ring-1 md:ring-2 ring-white">+</div>
                 </div>
-                <div className="flex items-center gap-1 md:gap-2 mb-0.5 md:mb-2">
-                  <div className="w-3.5 h-3.5 md:w-8 md:h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="material-symbols-outlined text-primary text-[8px] md:text-lg">diversity_3</span>
+                <div className="flex items-center gap-1 md:gap-2 mb-1 md:mb-2">
+                  <div className="w-4 h-4 md:w-8 md:h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="material-symbols-outlined text-primary text-[10px] md:text-lg">diversity_3</span>
                   </div>
-                  <div className="font-bold text-[8px] md:text-[14px] text-primary">1,200+ Families</div>
+                  <div className="font-bold text-[10px] md:text-[14px] text-primary">1,200+ Families</div>
                 </div>
-                <p className="text-on-surface-variant text-[7px] md:text-[12px] leading-tight md:leading-snug">
+                <p className="text-on-surface-variant text-[8px] md:text-[12px] leading-tight md:leading-snug">
                   Supported through personalized developmental journeys this year.
                 </p>
               </div>
