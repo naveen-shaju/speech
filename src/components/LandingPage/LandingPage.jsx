@@ -19,6 +19,7 @@ export default function LandingPage({ onBookAppointment }) {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const sections = ['hero', 'services', 'about', 'contact'];
     
     const observerOptions = {
@@ -75,15 +76,15 @@ export default function LandingPage({ onBookAppointment }) {
             <img
               alt="Speech & Development Care Center Logo"
               className="h-8 md:h-16 w-auto object-contain"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHNaP38D8Jy7WNPXKvoKds8KFAbzoNfJrgMR4vWGHvP89FXjyBeUVNwZs-lOiiBxjkmibnbLvJbGAb6S69hihGLb_xCop2epBYSWj3F-LDkjS-iicvJ9oMUWwiGBzarolFyb-cs5ffo4aaJ-RF3SO-CR6oqzGb9NaB9LxpYg3YmW9zeqtyRkqDH8pWzK1O1LAGEUwAvR36AAHir49Q0g-2SAPxQh4U3Xcz7vp7wAufdTqRD9mwqOYmHjYSEqFl9kHbunSDJxW7ct8=w512"
+              src="/logo.jpeg"
             />
           </div>
           
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-8 items-center ml-12 lg:ml-24">
+          {/* Desktop Navigation (Rendered on both mobile and desktop) */}
+          <nav className="flex gap-3 sm:gap-6 md:gap-8 items-center ml-2 sm:ml-6 md:ml-12 lg:ml-24">
             <a
               onClick={() => handleTabClick('services')}
-              className={`font-title-lg text-title-lg pb-1 transition-all ${
+              className={`font-title-lg text-[10px] sm:text-sm md:text-title-lg pb-0.5 md:pb-1 transition-all ${
                 activeTab === 'services'
                   ? 'text-primary font-bold border-b-2 border-primary'
                   : 'text-secondary hover:text-primary'
@@ -94,7 +95,7 @@ export default function LandingPage({ onBookAppointment }) {
             </a>
             <a
               onClick={() => handleTabClick('about')}
-              className={`font-title-lg text-title-lg pb-1 transition-all ${
+              className={`font-title-lg text-[10px] sm:text-sm md:text-title-lg pb-0.5 md:pb-1 transition-all ${
                 activeTab === 'about'
                   ? 'text-primary font-bold border-b-2 border-primary'
                   : 'text-secondary hover:text-primary'
@@ -105,7 +106,7 @@ export default function LandingPage({ onBookAppointment }) {
             </a>
             <a
               onClick={() => handleTabClick('contact')}
-              className={`font-title-lg text-title-lg pb-1 transition-all ${
+              className={`font-title-lg text-[10px] sm:text-sm md:text-title-lg pb-0.5 md:pb-1 transition-all ${
                 activeTab === 'contact'
                   ? 'text-primary font-bold border-b-2 border-primary'
                   : 'text-secondary hover:text-primary'
@@ -118,47 +119,10 @@ export default function LandingPage({ onBookAppointment }) {
 
           <button
             onClick={onBookAppointment}
-            className="hidden md:block bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20 cursor-pointer"
+            className="block bg-primary text-on-primary px-3 sm:px-6 py-1.5 sm:py-2.5 rounded-full font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20 cursor-pointer text-[10px] sm:text-sm md:text-base"
           >
             Book an Appointment
           </button>
-          
-          {/* Mobile Navigation */}
-          <nav className="flex md:hidden gap-3 items-center">
-            <a
-              onClick={() => handleTabClick('services')}
-              className={`text-[11px] font-bold pb-0.5 border-b transition-all ${
-                activeTab === 'services' ? 'text-primary border-primary' : 'text-secondary border-transparent'
-              }`}
-              href="#services"
-            >
-              Services
-            </a>
-            <a
-              onClick={() => handleTabClick('about')}
-              className={`text-[11px] pb-0.5 border-b transition-all ${
-                activeTab === 'about' ? 'text-primary border-primary' : 'text-secondary border-transparent'
-              }`}
-              href="#about"
-            >
-              Expertise
-            </a>
-            <a
-              onClick={() => handleTabClick('contact')}
-              className={`text-[11px] pb-0.5 border-b transition-all ${
-                activeTab === 'contact' ? 'text-primary border-primary' : 'text-secondary border-transparent'
-              }`}
-              href="#contact"
-            >
-              Contact
-            </a>
-            <button
-              onClick={onBookAppointment}
-              className="bg-primary text-on-primary px-3 py-1.5 rounded-full text-[10px] font-bold shadow-md shadow-primary/20 cursor-pointer"
-            >
-              Book
-            </button>
-          </nav>
         </div>
       </header>
 
@@ -203,16 +167,16 @@ export default function LandingPage({ onBookAppointment }) {
               {/* Trust/Credibility Badges */}
               <div className="flex flex-row flex-nowrap items-center justify-between sm:justify-start gap-x-1 sm:gap-x-6 pt-4 sm:pt-6 border-t border-surface-variant/20 text-on-surface-variant text-[8px] sm:text-xs md:text-sm w-full">
                 <div className="flex items-center gap-1 sm:gap-2">
-                  <span className="material-symbols-outlined text-primary text-[12px] sm:text-[18px] md:text-[20px]">workspace_premium</span>
-                  <span className="font-semibold text-on-surface">ASHA Certified</span>
+                  <span className="material-symbols-outlined text-primary text-[12px] sm:text-[18px] md:text-[20px]">verified_user</span>
+                  <span className="font-semibold text-on-surface">RCI Registered</span>
                 </div>
                 <div className="flex items-center gap-1 sm:gap-2">
                   <span className="material-symbols-outlined text-primary text-[12px] sm:text-[18px] md:text-[20px]">school</span>
-                  <span className="font-semibold text-on-surface">Stanford PhD Led</span>
+                  <span className="font-semibold text-on-surface">MSc SLP</span>
                 </div>
                 <div className="flex items-center gap-1 sm:gap-2">
-                  <span className="material-symbols-outlined text-primary text-[12px] sm:text-[18px] md:text-[20px]">verified_user</span>
-                  <span className="font-semibold text-on-surface">15+ Yrs Experience</span>
+                  <span className="material-symbols-outlined text-primary text-[12px] sm:text-[18px] md:text-[20px]">history</span>
+                  <span className="font-semibold text-on-surface">5+ Yrs Experience</span>
                 </div>
               </div>
             </div>
@@ -221,8 +185,8 @@ export default function LandingPage({ onBookAppointment }) {
               <div className="relative rounded-lg md:rounded-xl overflow-hidden shadow-xl md:shadow-2xl shadow-primary/10 max-w-lg w-full aspect-[3/4] md:aspect-auto">
                 <img
                   alt="Speech & Development Care Center"
-                  className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida/AP1WRLs4dPi-g03n5qTQkyR8H5KevyEV4HJ_wqJjlEJwYNKRedqYImcY1eVhdPgtiAb8tFjIsul7-qikm8fQ8oOMyZKTsrnrzRpCdQ7re0KgByiEUeXqasAmtXBoTBCWSB46KTXgGSeP__Fsl5pl-_4FYZBv8r2XI1PjkkQ6kt3XWxkO3B_pDCB69VlFJX-mXPctlkFIYpSr9hM0UYGnEVY--wri4YGkDd4-dEI2SETrL_BxjSfZtXjlxjIwVwCxmTJNQUcdEbs4A4eW=w1600"
+                  className="w-full h-full object-cover animate-fadeIn"
+                  src="/hero.jpg"
                 />
               </div>
               
@@ -250,17 +214,17 @@ export default function LandingPage({ onBookAppointment }) {
 
         {/* Bio Section */}
         <section id="about" className="relative md:min-h-[calc(100vh-6rem)] flex items-center px-margin-mobile md:px-margin-desktop py-6 md:py-12 bg-surface-container-lowest animate-fadeIn border-t border-b border-surface-variant/20">
-          <div className="max-w-container-max mx-auto grid grid-cols-[0.8fr_1.2fr] md:grid-cols-2 gap-5 md:gap-20 items-center">
+          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
             <div className="flex justify-center">
               <div className="relative rounded-xl overflow-hidden aspect-square max-w-md w-full shadow-2xl">
                 <img
                   className="w-full h-full object-cover"
-                  alt="Dr. Elena Sterling"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA13eGQVVwXn3RlKROrDWHY_QvEVuoLA_y0dqrl0TvLk2nEq5NM8peXweZURON6TefIoUtlOO9Vl0Ybab2tONLmjBuiw7Sfb2JzejbgBJKxRrgz9L3DKl1wZcft9u8Vj_NQ6gEh8kBFdZnEDz6qhMLL0RsezAHOTsohFGDbR-gFKfDrOrb6hE1GmXv-0_WyIz_DGv2l3PtkdOnWr7ssfVsxIuF6hFXEL8-rj_7BJWjmH_N28nOU508_scEy-zpXTF7OF38p9tRRbjk"
+                  alt="Divyashree"
+                  src="/therapist.jpg"
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-2 md:p-8 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-                  <p className="text-white font-bold text-[12px] md:text-2xl">Dr. Elena Sterling</p>
-                  <p className="text-white/80 text-[9px] md:text-sm font-medium">Lead Clinical Specialist</p>
+                  <p className="text-white font-bold text-[12px] md:text-2xl">Divyashree</p>
+                  <p className="text-white/80 text-[9px] md:text-sm font-medium">Speech-Language Pathologist</p>
                 </div>
               </div>
             </div>
@@ -270,27 +234,41 @@ export default function LandingPage({ onBookAppointment }) {
               </h2>
               <div className="space-y-3 md:space-y-6 text-on-surface-variant">
                 <p className="font-body-lg italic border-l-2 md:border-l-4 border-primary pl-2 md:pl-6 text-[11px] md:text-lg">
-                  "Every child's voice is a unique symphony waiting to be heard.<span className="hidden md:inline"> Our mission is to provide the instruments and the guidance to make that possible.</span>"
+                  "Every child’s voice deserves to be heard. My mission is to make sure no parent walks alone in that journey."
                 </p>
                 <p className="font-body-md text-[11px] md:text-base leading-relaxed">
-                  <span className="md:hidden">15 years of expertise in neurodevelopmental communication.</span>
-                  <span className="hidden md:inline">
-                    With over 15 years of specialized experience in neurodevelopmental communication, Dr. Sterling founded the center on the principle that therapy should be as unique as the individual.
-                  </span>
+                  With 5 years of dedicated clinical experience, I am Divyashree — a passionate Speech-Language Pathologist committed to making a real difference in every child’s communication journey. I believe that behind every child struggling to speak, there is a parent who needs guidance, reassurance, and the right tools. Too many families are navigating this path without proper advice or therapy — and that is exactly the gap I built Communica to fill. My platform is a space where parents and caregivers are trained, counselled, and empowered to actively support their child’s growth at home — because when a parent understands their child’s needs, progress happens every single day. Every child matters here. Every milestone celebrated. Every family supported — one step at a time.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 pt-1 md:pt-4">
+                <div className="grid grid-cols-2 gap-3 md:gap-4 pt-1 md:pt-4">
                   <div className="flex items-center md:items-start gap-1.5 md:gap-3">
                     <span className="material-symbols-outlined text-primary text-[14px] md:text-xl md:mt-1">school</span>
                     <div>
-                      <p className="font-bold text-[10px] md:text-[16px] text-on-surface leading-tight">PhD Linguistics<span className="hidden md:inline"> Clinical Linguistics</span></p>
-                      <p className="text-[14px] hidden md:block text-on-surface-variant">Stanford University</p>
+                      <p className="font-bold text-[10px] md:text-[16px] text-on-surface leading-tight">MSc Speech-Language Pathology</p>
                     </div>
                   </div>
                   <div className="flex items-center md:items-start gap-1.5 md:gap-3">
                     <span className="material-symbols-outlined text-primary text-[14px] md:text-xl md:mt-1">verified_user</span>
                     <div>
-                      <p className="font-bold text-[10px] md:text-[16px] text-on-surface leading-tight">ASHA Certified</p>
-                      <p className="text-[14px] hidden md:block text-on-surface-variant">Board Certified Specialist</p>
+                      <p className="font-bold text-[10px] md:text-[16px] text-on-surface leading-tight">RCI Registered Speech-Language Pathologist</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center md:items-start gap-1.5 md:gap-3">
+                    <span className="material-symbols-outlined text-primary text-[14px] md:text-xl md:mt-1">workspace_premium</span>
+                    <div>
+                      <p className="font-bold text-[10px] md:text-[16px] text-on-surface leading-tight">OPT Level 1 Certified Practitioner</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center md:items-start gap-1.5 md:gap-3">
+                    <span className="material-symbols-outlined text-primary text-[14px] md:text-xl md:mt-1">psychology</span>
+                    <div>
+                      <p className="font-bold text-[10px] md:text-[16px] text-on-surface leading-tight">Natural Language Acquisition</p>
+                      <p className="text-[9px] sm:text-[14px] block text-on-surface-variant">GLP Practitioner</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center md:items-start gap-1.5 md:gap-3 col-span-2">
+                    <span className="material-symbols-outlined text-primary text-[14px] md:text-xl md:mt-1">history</span>
+                    <div>
+                      <p className="font-bold text-[10px] md:text-[16px] text-on-surface leading-tight">5 Years of Clinical Experience</p>
                     </div>
                   </div>
                 </div>
@@ -320,7 +298,7 @@ export default function LandingPage({ onBookAppointment }) {
                   child_care
                 </span>
                 <h3 className="font-bold text-[12px] md:text-base group-hover:text-on-primary mb-1 md:mb-2">Child Speech</h3>
-                <p className="hidden md:block text-xs md:text-sm opacity-80 mb-4 group-hover:text-white/90">
+                <p className="block text-[9px] sm:text-xs md:text-sm opacity-80 mb-2 md:mb-4 group-hover:text-white/90">
                   Articulative development and early phonological clarity for growing minds.
                 </p>
               </div>
@@ -339,7 +317,7 @@ export default function LandingPage({ onBookAppointment }) {
                   extension
                 </span>
                 <h3 className="font-bold text-[12px] md:text-base group-hover:text-on-primary mb-1 md:mb-2">Autism Support</h3>
-                <p className="hidden md:block text-xs md:text-sm opacity-80 mb-4 group-hover:text-white/90">
+                <p className="block text-[9px] sm:text-xs md:text-sm opacity-80 mb-2 md:mb-4 group-hover:text-white/90">
                   Neuro-affirming communication strategies and sensory-integrated support.
                 </p>
               </div>
@@ -358,7 +336,7 @@ export default function LandingPage({ onBookAppointment }) {
                   spa
                 </span>
                 <h3 className="font-bold text-[12px] md:text-base group-hover:text-on-primary mb-1 md:mb-2">Early Intervention</h3>
-                <p className="hidden md:block text-xs md:text-sm opacity-80 mb-4 group-hover:text-white/90">
+                <p className="block text-[9px] sm:text-xs md:text-sm opacity-80 mb-2 md:mb-4 group-hover:text-white/90">
                   Proactive identification and foundational support for toddlers 0-3.
                 </p>
               </div>
@@ -377,7 +355,7 @@ export default function LandingPage({ onBookAppointment }) {
               </div>
               <div>
                 <h3 className="font-bold text-[12px] md:text-base">Learning & Language</h3>
-                <p className="hidden md:block text-xs md:text-sm text-on-surface-variant leading-relaxed mt-1 md:mt-2">
+                <p className="block text-[9px] sm:text-xs md:text-sm text-on-surface-variant leading-relaxed mt-1">
                   Cognitive-linguistic strategies for academic success and literacy development.
                 </p>
               </div>
@@ -393,30 +371,27 @@ export default function LandingPage({ onBookAppointment }) {
               </div>
               <div>
                 <h3 className="font-bold text-[12px] md:text-base">Stammering & Voice</h3>
-                <p className="hidden md:block text-xs md:text-sm text-on-surface-variant leading-relaxed mt-1 md:mt-2">
+                <p className="block text-[9px] sm:text-xs md:text-sm text-on-surface-variant leading-relaxed mt-1">
                   Fluency shaping and vocal health management for all age groups.
                 </p>
               </div>
             </div>
 
             {/* Guidance Card */}
-            <div className="bento-item bg-secondary-container p-5 md:p-8 rounded-lg md:rounded-xl text-center space-y-2 md:space-y-4 relative overflow-hidden border border-primary/10 shadow-sm col-span-12">
+            <div className="bento-item bg-secondary-container p-4 md:p-8 rounded-lg md:rounded-xl text-center space-y-2 md:space-y-4 relative overflow-hidden border border-primary/10 shadow-sm col-span-12">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 pointer-events-none"></div>
               <div className="relative z-10">
-                <h3 className="font-headline-md text-[16px] md:text-xl text-primary font-bold">
-                  <span className="md:hidden">Need Guidance?</span>
-                  <span className="hidden md:inline">I'm Not Sure – Need Guidance?</span>
+                <h3 className="font-headline-md text-xs sm:text-base md:text-xl text-primary font-bold">
+                  I'm Not Sure – Need Guidance?
                 </h3>
-                <p className="font-body-lg text-on-secondary-container max-w-xl mx-auto text-[11px] md:text-sm">
-                  <span className="md:hidden">Free 15-minute consultation.</span>
-                  <span className="hidden md:inline">Every journey starts with understanding. Schedule a free 15-minute consultation to find the right path for your family.</span>
+                <p className="font-body-lg text-on-secondary-container max-w-xl mx-auto text-[9px] sm:text-xs md:text-sm">
+                  Every journey starts with understanding. Schedule a free 15-minute consultation to find the right path for your family.
                 </p>
                 <button
                   onClick={onBookAppointment}
-                  className="bg-primary text-on-primary px-4 md:px-8 py-2 md:py-3 rounded-lg md:rounded-xl font-bold shadow-lg hover:bg-tertiary transition-colors cursor-pointer text-[11px] md:text-sm relative z-10 mt-1 md:mt-2"
+                  className="bg-primary text-on-primary px-3 sm:px-6 md:px-8 py-1.5 sm:py-2.5 md:py-3 rounded-lg md:rounded-xl font-bold shadow-lg hover:bg-tertiary transition-colors cursor-pointer text-[9px] sm:text-xs md:text-sm mt-1 md:mt-2"
                 >
-                  <span className="md:hidden">Request Help</span>
-                  <span className="hidden md:inline">Request Clinical Guidance</span>
+                  Request Clinical Guidance
                 </button>
               </div>
             </div>
@@ -431,7 +406,7 @@ export default function LandingPage({ onBookAppointment }) {
               </div>
               <div>
                 <h3 className="font-bold text-[12px] md:text-base">Adult Support</h3>
-                <p className="hidden md:block text-xs md:text-sm text-on-surface-variant leading-relaxed mt-1 md:mt-2">
+                <p className="block text-[9px] sm:text-xs md:text-sm text-on-surface-variant leading-relaxed mt-1">
                   Post-stroke recovery, social communication, and professional voice coaching.
                 </p>
               </div>
@@ -447,7 +422,7 @@ export default function LandingPage({ onBookAppointment }) {
               </div>
               <div>
                 <h3 className="font-bold text-[12px] md:text-base">Parent Consultation</h3>
-                <p className="hidden md:block text-xs md:text-sm text-on-surface-variant leading-relaxed mt-1 md:mt-2">
+                <p className="block text-[9px] sm:text-xs md:text-sm text-on-surface-variant leading-relaxed mt-1">
                   Empowering caregivers with tools and home-based developmental strategies.
                 </p>
               </div>
@@ -481,63 +456,63 @@ export default function LandingPage({ onBookAppointment }) {
 
       {/* Footer */}
       <footer id="contact" className="bg-surface-container w-full px-4 md:px-margin-desktop py-8 md:py-20 border-t border-surface-variant/20">
-        <div className="max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-gutter mb-6 md:mb-16">
+        <div className="max-w-container-max mx-auto grid grid-cols-4 gap-2 sm:gap-6 md:gap-gutter mb-6 md:mb-16">
           <div className="col-span-1">
-            <div className="font-headline-md text-headline-md font-bold text-primary mb-3 md:mb-6 flex items-center">
+            <div className="font-headline-md text-headline-md font-bold text-primary mb-2 md:mb-6 flex items-center">
               <img
                 alt="Speech & Development Care Center Logo"
-                className="h-8 md:h-16 w-auto object-contain"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHNaP38D8Jy7WNPXKvoKds8KFAbzoNfJrgMR4vWGHvP89FXjyBeUVNwZs-lOiiBxjkmibnbLvJbGAb6S69hihGLb_xCop2epBYSWj3F-LDkjS-iicvJ9oMUWwiGBzarolFyb-cs5ffo4aaJ-RF3SO-CR6oqzGb9NaB9LxpYg3YmW9zeqtyRkqDH8pWzK1O1LAGEUwAvR36AAHir49Q0g-2SAPxQh4U3Xcz7vp7wAufdTqRD9mwqOYmHjYSEqFl9kHbunSDJxW7ct8=w512"
+                className="h-6 sm:h-8 md:h-16 w-auto object-contain"
+                src="/logo.jpeg"
               />
             </div>
-            <p className="text-on-surface-variant font-body-md mb-6 leading-relaxed text-sm hidden md:block">
+            <p className="text-on-surface-variant font-body-md mb-2 md:mb-6 leading-relaxed text-[8px] sm:text-xs md:text-sm block">
               Compassionate expertise for speech and developmental milestones.
             </p>
-            <div className="flex gap-2 md:gap-4">
+            <div className="flex gap-1.5 md:gap-4">
               <a
-                className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:text-primary transition-colors border border-surface-variant/10 text-secondary"
+                className="w-5 h-5 sm:w-10 sm:h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:text-primary transition-colors border border-surface-variant/10 text-secondary"
                 href="#"
               >
-                <span className="material-symbols-outlined text-[16px] md:text-[20px]">public</span>
+                <span className="material-symbols-outlined text-[10px] sm:text-[20px]">public</span>
               </a>
               <a
-                className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:text-primary transition-colors border border-surface-variant/10 text-secondary"
+                className="w-5 h-5 sm:w-10 sm:h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:text-primary transition-colors border border-surface-variant/10 text-secondary"
                 href="#"
               >
-                <span className="material-symbols-outlined text-[16px] md:text-[20px]">share</span>
+                <span className="material-symbols-outlined text-[10px] sm:text-[20px]">share</span>
               </a>
             </div>
           </div>
-          <div className="hidden md:block">
-            <h4 className="font-title-lg text-primary font-bold mb-6 text-base md:text-lg">Practice</h4>
-            <ul className="space-y-4">
+          <div className="block">
+            <h4 className="font-title-lg text-primary font-bold mb-2 md:mb-6 text-[10px] sm:text-base md:text-lg">Practice</h4>
+            <ul className="space-y-1 sm:space-y-4 text-[9px] sm:text-sm text-on-surface-variant">
               <li>
-                <a className="text-on-surface-variant hover:text-primary underline transition-all text-sm" href="#">
+                <a className="hover:text-primary underline transition-all" href="#">
                   About Us
                 </a>
               </li>
               <li>
-                <a className="text-on-surface-variant hover:text-primary underline transition-all text-sm" href="#">
+                <a className="hover:text-primary underline transition-all" href="#">
                   Our Team
                 </a>
               </li>
               <li>
-                <a className="text-on-surface-variant hover:text-primary underline transition-all text-sm" href="#">
+                <a className="hover:text-primary underline transition-all" href="#">
                   Careers
                 </a>
               </li>
               <li>
-                <a className="text-on-surface-variant hover:text-primary underline transition-all text-sm" href="#">
+                <a className="hover:text-primary underline transition-all" href="#">
                   Patient Portal
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-title-lg text-primary font-bold mb-2 md:mb-6 text-[11px] md:text-lg">Contact</h4>
-            <ul className="space-y-2 md:space-y-4 text-on-surface-variant text-[10px] md:text-sm">
+            <h4 className="font-title-lg text-primary font-bold mb-2 md:mb-6 text-[10px] sm:text-base md:text-lg">Contact</h4>
+            <ul className="space-y-1 sm:space-y-4 text-on-surface-variant text-[9px] sm:text-sm">
               <li className="flex gap-1 md:gap-2">
-                <span className="material-symbols-outlined text-primary text-[14px] md:text-base">location_on</span>
+                <span className="material-symbols-outlined text-primary text-[10px] sm:text-base">location_on</span>
                 <span>
                   123 Healing Path Way,
                   <br />
@@ -545,34 +520,18 @@ export default function LandingPage({ onBookAppointment }) {
                 </span>
               </li>
               <li className="flex gap-1 md:gap-2">
-                <span className="material-symbols-outlined text-primary text-[14px] md:text-base">call</span>
+                <span className="material-symbols-outlined text-primary text-[10px] sm:text-base">call</span>
                 <span>(555) 012-3456</span>
               </li>
               <li className="flex gap-1 md:gap-2">
-                <span className="material-symbols-outlined text-primary text-[14px] md:text-base">mail</span>
+                <span className="material-symbols-outlined text-primary text-[10px] sm:text-base">mail</span>
                 <span className="break-all">care@speechdevelopment.com</span>
               </li>
             </ul>
-            
-            {/* Hours shown under Contact on mobile only */}
-            <div className="md:hidden mt-4">
-              <h4 className="font-title-lg text-primary font-bold mb-1 text-[11px]">Hours</h4>
-              <ul className="space-y-1 text-on-surface-variant text-[10px]">
-                <li className="flex justify-between">
-                  <span>Mon - Fri:</span> <span className="ml-2">8:00 - 18:00</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Saturday:</span> <span className="ml-2">9:00 - 14:00</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Sunday:</span> <span className="ml-2">Closed</span>
-                </li>
-              </ul>
-            </div>
           </div>
-          <div className="hidden md:block">
-            <h4 className="font-title-lg text-primary font-bold mb-6 text-base md:text-lg">Hours</h4>
-            <ul className="space-y-4 text-on-surface-variant text-sm">
+          <div className="block">
+            <h4 className="font-title-lg text-primary font-bold mb-2 md:mb-6 text-[10px] sm:text-base md:text-lg">Hours</h4>
+            <ul className="space-y-1 sm:space-y-4 text-on-surface-variant text-[9px] sm:text-sm">
               <li className="flex justify-between">
                 <span>Mon - Fri:</span> <span>8:00 - 18:00</span>
               </li>
