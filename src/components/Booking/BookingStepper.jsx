@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function BookingStepper({ onExit }) {
   const [currentStep, setCurrentStep] = useState(1);
@@ -10,7 +10,7 @@ export default function BookingStepper({ onExit }) {
     childName: '',
     email: '',
     phone: '',
-    selectedDate: 11, // Day number in Nov 2024
+    selectedDate: new Date().toISOString(), // Default to today's date
     sessionMode: 'inperson', // 'inperson' or 'online'
     selectedTime: '09:00 AM',
     selectedService: 'Speech Therapy',
@@ -18,6 +18,12 @@ export default function BookingStepper({ onExit }) {
   });
 
   const [errors, setErrors] = useState({});
+  const [viewedYear, setViewedYear] = useState(new Date().getFullYear());
+  const [viewedMonth, setViewedMonth] = useState(new Date().getMonth());
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Helper to change input values and clear validation error on input
   const handleInputChange = (field, value) => {
@@ -76,11 +82,58 @@ export default function BookingStepper({ onExit }) {
     return Object.keys(newErrors).length === 0;
   };
 
+  const sendBookingEmail = async () => {
+    const formattedDate = formatSelectedDate();
+    const mode = formData.sessionMode === 'inperson' ? 'In-Person Clinic' : 'Telehealth';
+    let accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY_HERE') {
+      accessKey = '96d126f7-a0aa-4ff5-859e-92c5edcee3a8';
+    }
+
+    const payload = {
+      access_key: accessKey,
+      subject: `New Appointment Booking: ${formData.childName} - Speech & Development Care Center`,
+      from_name: formData.parentName,
+      email: formData.email,
+      message: `Dear Admin,
+
+A new appointment has been booked. Below are the details:
+
+- Parent/Guardian Name: ${formData.parentName}
+- Child's Name: ${formData.childName}
+- Email: ${formData.email}
+- Phone: ${formData.phone}
+- Selected Service: ${formData.selectedService}
+- Session Mode: ${mode}
+- Date: ${formattedDate}
+- Time: ${formData.selectedTime}
+- Additional Notes: ${formData.notes || 'None'}
+
+Thank you.`,
+    };
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json();
+      console.log('Web3Forms Response Stringified:', JSON.stringify(data));
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
+
   const handleNext = () => {
     if (validateStep(currentStep)) {
       if (currentStep < totalSteps) {
         setCurrentStep((prev) => prev + 1);
       } else {
+        sendBookingEmail();
         setIsSubmitted(true);
       }
     }
@@ -90,49 +143,94 @@ export default function BookingStepper({ onExit }) {
     if (currentStep > 1) {
       setCurrentStep((prev) => prev - 1);
     }
-  };
-
-  const resetForm = () => {
+  };  const resetForm = () => {
     setFormData({
       parentName: '',
       childName: '',
       email: '',
       phone: '',
-      selectedDate: 11,
+      selectedDate: new Date().toISOString(),
       sessionMode: 'inperson',
       selectedTime: '09:00 AM',
       selectedService: 'Speech Therapy',
       notes: '',
     });
+    setViewedYear(new Date().getFullYear());
+    setViewedMonth(new Date().getMonth());
     setErrors({});
     setCurrentStep(1);
     setIsSubmitted(false);
   };
 
-  // November 2024 calendar rendering helper
-  // Nov 1, 2024 is Friday. Columns are M, T, W, T, F, S, S
-  // Friday is 5th column, so offset is 4 empty spots.
-  const calendarOffset = 4;
-  const daysInMonth = 30;
+  const getDaysInMonth = (year, month) => {
+    return new Date(year, month + 1, 0).getDate();
+  };
+
+  const getCalendarOffset = (year, month) => {
+    const firstDay = new Date(year, month, 1).getDay();
+    return firstDay === 0 ? 6 : firstDay - 1;
+  };
+
+  const handlePrevMonth = () => {
+    const today = new Date();
+    if (viewedYear > today.getFullYear() || (viewedYear === today.getFullYear() && viewedMonth > today.getMonth())) {
+      if (viewedMonth === 0) {
+        setViewedMonth(11);
+        setViewedYear((prev) => prev - 1);
+      } else {
+        setViewedMonth((prev) => prev - 1);
+      }
+    }
+  };
+
+  const handleNextMonth = () => {
+    if (viewedMonth === 11) {
+      setViewedMonth(0);
+      setViewedYear((prev) => prev + 1);
+    } else {
+      setViewedMonth((prev) => prev + 1);
+    }
+  };
 
   const renderCalendar = () => {
     const days = [];
+    const offset = getCalendarOffset(viewedYear, viewedMonth);
+    const daysCount = getDaysInMonth(viewedYear, viewedMonth);
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     // Render offset cells
-    for (let i = 0; i < calendarOffset; i++) {
-      days.push(<div key={`offset-${i}`} className="p-2 text-on-surface-variant/30"></div>);
+    for (let i = 0; i < offset; i++) {
+      days.push(<div key={`offset-${i}`} className="p-2"></div>);
     }
+
     // Render actual days
-    for (let day = 1; day <= daysInMonth; day++) {
-      const isSelected = formData.selectedDate === day;
+    for (let day = 1; day <= daysCount; day++) {
+      const cellDate = new Date(viewedYear, viewedMonth, day);
+      const isPast = cellDate < today;
+
+      let isSelected = false;
+      if (formData.selectedDate) {
+        const selected = new Date(formData.selectedDate);
+        isSelected =
+          selected.getDate() === day &&
+          selected.getMonth() === viewedMonth &&
+          selected.getFullYear() === viewedYear;
+      }
+
       days.push(
         <button
           key={day}
           type="button"
-          onClick={() => handleInputChange('selectedDate', day)}
-          className={`p-2 rounded-lg text-center font-medium transition-all cursor-pointer ${
-            isSelected
-              ? 'bg-primary text-white font-bold shadow-md'
-              : 'hover:bg-secondary-container hover:text-primary text-on-surface'
+          disabled={isPast}
+          onClick={() => handleInputChange('selectedDate', cellDate.toISOString())}
+          className={`p-2 rounded-lg text-center font-medium transition-all ${
+            isPast
+              ? 'text-on-surface-variant/20 cursor-not-allowed opacity-30'
+              : isSelected
+              ? 'bg-primary text-white font-bold shadow-md cursor-pointer'
+              : 'hover:bg-secondary-container hover:text-primary text-on-surface cursor-pointer'
           }`}
         >
           {day}
@@ -142,19 +240,11 @@ export default function BookingStepper({ onExit }) {
     return days;
   };
 
-  const dayOfWeekName = (day) => {
-    // Nov 1 is Friday. (Nov 1 % 7) = 1 (Friday).
-    // Let's compute day of week name
-    const weekdays = ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'];
-    return weekdays[day % 7];
-  };
-
   const formatSelectedDate = () => {
-    const dayName = dayOfWeekName(formData.selectedDate);
-    const months = ['Nov'];
-    return `${dayName}, Nov ${formData.selectedDate}`;
+    if (!formData.selectedDate) return '';
+    const date = new Date(formData.selectedDate);
+    return date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
   };
-
   const progressPercent = ((currentStep - 1) / (totalSteps - 1)) * 100;
 
   return (
@@ -165,7 +255,7 @@ export default function BookingStepper({ onExit }) {
           <img
             alt="Speech & Development Care Center Logo"
             className="h-16 w-auto object-contain"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpwM6eVddPWz0aabKbrlqkFPFE6Bgn525y37fUsYGWZk4RRWxw2dqxiu6nCPPydUMTyvjvC3Gm8Wpb2y_tiM8MjVGMpxDxJ9iNsbWwS1JpZBJ3EKg4U2rjWDJpbUQffOZPgWlHgl7tYrUkUGYlwyatY8FAgif809oJ7bK96UDHJZbJgVUEwl3Q1uNOa-xpLZ9kl_Tb_DK8eeFi9DwJuumXbQ8wKRjn-b4X5Fr1hVHT2i95RFm1lHFbbF5xi7TR0NDhanc2iVgv9-w=w512"
+            src="/logo.jpeg"
           />
         </div>
         <button
@@ -395,15 +485,32 @@ export default function BookingStepper({ onExit }) {
                         <div className="bg-surface-container-low rounded-xl p-4 border border-surface-variant/20 shadow-inner">
                           <div className="flex justify-between items-center mb-4">
                             <span className="font-title-lg text-primary font-bold">
-                              November 2024
+                              {new Date(viewedYear, viewedMonth).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                             </span>
                             <div className="flex gap-2 text-secondary">
-                              <span className="material-symbols-outlined cursor-not-allowed opacity-50">
-                                chevron_left
-                              </span>
-                              <span className="material-symbols-outlined cursor-not-allowed opacity-50">
+                              {(() => {
+                                const today = new Date();
+                                const isPrevDisabled = viewedYear === today.getFullYear() && viewedMonth === today.getMonth();
+                                return (
+                                  <button
+                                    type="button"
+                                    disabled={isPrevDisabled}
+                                    onClick={handlePrevMonth}
+                                    className={`material-symbols-outlined transition-all ${
+                                      isPrevDisabled ? 'cursor-not-allowed opacity-30' : 'cursor-pointer hover:text-primary'
+                                    }`}
+                                  >
+                                    chevron_left
+                                  </button>
+                                );
+                              })()}
+                              <button
+                                type="button"
+                                onClick={handleNextMonth}
+                                className="material-symbols-outlined cursor-pointer hover:text-primary transition-all"
+                              >
                                 chevron_right
-                              </span>
+                              </button>
                             </div>
                           </div>
                           <div className="grid grid-cols-7 gap-1 text-center text-label-sm mb-2 font-bold text-outline">
@@ -703,7 +810,7 @@ export default function BookingStepper({ onExit }) {
               <img
                 alt="Speech & Development Care Center Logo"
                 className="h-12 w-auto object-contain"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpwM6eVddPWz0aabKbrlqkFPFE6Bgn525y37fUsYGWZk4RRWxw2dqxiu6nCPPydUMTyvjvC3Gm8Wpb2y_tiM8MjVGMpxDxJ9iNsbWwS1JpZBJ3EKg4U2rjWDJpbUQffOZPgWlHgl7tYrUkUGYlwyatY8FAgif809oJ7bK96UDHJZbJgVUEwl3Q1uNOa-xpLZ9kl_Tb_DK8eeFi9DwJuumXbQ8wKRjn-b4X5Fr1hVHT2i95RFm1lHFbbF5xi7TR0NDhanc2iVgv9-w=w512"
+                src="/logo.jpeg"
               />
             </div>
           </div>
