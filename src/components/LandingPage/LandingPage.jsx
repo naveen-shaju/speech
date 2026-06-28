@@ -179,7 +179,7 @@ export default function LandingPage({ onBookAppointment }) {
             </div>
 
             <div className="relative group flex justify-start">
-              <div className="relative rounded-lg md:rounded-xl overflow-hidden shadow-xl md:shadow-2xl shadow-primary/10 max-w-[140px] sm:max-w-[200px] md:max-w-lg w-full aspect-[3/4] md:aspect-auto ml-auto">
+              <div className="relative rounded-lg md:rounded-xl overflow-hidden shadow-xl md:shadow-2xl shadow-primary/10 max-w-[160px] sm:max-w-[220px] md:max-w-lg w-full aspect-[3/2] md:aspect-auto ml-auto">
                 <img
                   alt="Speech & Development Care Center"
                   className="w-full h-full object-cover animate-fadeIn"
