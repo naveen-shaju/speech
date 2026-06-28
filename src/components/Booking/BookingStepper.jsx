@@ -803,66 +803,108 @@ Thank you.`,
       </main>
 
       {/* Footer */}
-      <footer className="w-full px-margin-mobile md:px-margin-desktop py-12 grid grid-cols-1 md:grid-cols-4 gap-gutter bg-surface-container dark:bg-inverse-surface mt-auto border-t border-surface-variant/20">
-        <div className="col-span-1 md:col-span-1">
-          <div className="font-headline-md text-headline-md font-bold text-primary mb-4">
-            <div className="flex items-center">
+      <footer id="contact" className="bg-surface-container w-full px-4 md:px-margin-desktop py-8 md:py-20 border-t border-surface-variant/20">
+        <div className="max-w-container-max mx-auto grid grid-cols-4 gap-2 sm:gap-6 md:gap-gutter mb-6 md:mb-16">
+          <div className="col-span-1">
+            <div className="font-headline-md text-headline-md font-bold text-primary mb-2 md:mb-6 flex items-center">
               <img
                 alt="Speech & Development Care Center Logo"
-                className="h-12 w-auto object-contain"
+                className="h-6 sm:h-8 md:h-16 w-auto object-contain"
                 src="/logo.jpeg"
               />
             </div>
+            <p className="text-on-surface-variant font-body-md mb-2 md:mb-6 leading-relaxed text-[8px] sm:text-xs md:text-sm block">
+              Compassionate expertise for speech and developmental milestones.
+            </p>
+            <div className="flex gap-1.5 md:gap-4">
+              <a
+                className="w-5 h-5 sm:w-10 sm:h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:text-primary transition-colors border border-surface-variant/10 text-secondary"
+                href="#"
+              >
+                <span className="material-symbols-outlined text-[10px] sm:text-[20px]">public</span>
+              </a>
+              <a
+                className="w-5 h-5 sm:w-10 sm:h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:text-primary transition-colors border border-surface-variant/10 text-secondary"
+                href="#"
+              >
+                <span className="material-symbols-outlined text-[10px] sm:text-[20px]">share</span>
+              </a>
+            </div>
           </div>
-          <p className="text-on-surface-variant font-body-md text-body-md max-w-xs mt-2">
-            Excellence in speech and developmental therapy since 2012.
-          </p>
+          <div className="block">
+            <h4 className="font-title-lg text-primary font-bold mb-2 md:mb-6 text-[10px] sm:text-base md:text-lg">Practice</h4>
+            <ul className="space-y-1 sm:space-y-4 text-[9px] sm:text-sm text-on-surface-variant">
+              <li>
+                <a className="hover:text-primary underline transition-all" href="#">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a className="hover:text-primary underline transition-all" href="#">
+                  Our Team
+                </a>
+              </li>
+              <li>
+                <a className="hover:text-primary underline transition-all" href="#">
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a className="hover:text-primary underline transition-all" href="#">
+                  Patient Portal
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-title-lg text-primary font-bold mb-2 md:mb-6 text-[10px] sm:text-base md:text-lg">Contact</h4>
+            <ul className="space-y-1 sm:space-y-4 text-on-surface-variant text-[9px] sm:text-sm">
+              <li className="flex gap-1 md:gap-2">
+                <span className="material-symbols-outlined text-primary text-[10px] sm:text-base">location_on</span>
+                <span>
+                  123 Healing Path Way,
+                  <br />
+                  Suite 200, Boston MA
+                </span>
+              </li>
+              <li className="flex gap-1 md:gap-2">
+                <span className="material-symbols-outlined text-primary text-[10px] sm:text-base">call</span>
+                <span>(555) 012-3456</span>
+              </li>
+              <li className="flex gap-1 md:gap-2">
+                <span className="material-symbols-outlined text-primary text-[10px] sm:text-base">mail</span>
+                <span className="break-all">care@speechdevelopment.com</span>
+              </li>
+            </ul>
+          </div>
+          <div className="block">
+            <h4 className="font-title-lg text-primary font-bold mb-2 md:mb-6 text-[10px] sm:text-base md:text-lg">Hours</h4>
+            <ul className="space-y-1 sm:space-y-4 text-on-surface-variant text-[9px] sm:text-sm">
+              <li className="flex justify-between">
+                <span>Mon - Fri:</span> <span>8:00 - 18:00</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Saturday:</span> <span>9:00 - 14:00</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Sunday:</span> <span>Closed</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="col-span-1">
-          <h4 className="font-title-lg text-primary font-bold mb-4">Patient Care</h4>
-          <ul className="space-y-2">
-            <li>
-              <a className="text-on-surface-variant hover:text-primary transition-all text-sm font-medium" href="#">
-                Patient Portal
-              </a>
-            </li>
-            <li>
-              <a className="text-on-surface-variant hover:text-primary transition-all text-sm font-medium" href="#">
-                Financial Assistance
-              </a>
-            </li>
-            <li>
-              <a className="text-on-surface-variant hover:text-primary transition-all text-sm font-medium" href="#">
-                Feedback
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="col-span-1">
-          <h4 className="font-title-lg text-primary font-bold mb-4">Legal</h4>
-          <ul className="space-y-2">
-            <li>
-              <a className="text-on-surface-variant hover:text-primary transition-all text-sm font-medium" href="#">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a className="text-on-surface-variant hover:text-primary transition-all text-sm font-medium" href="#">
-                Terms of Service
-              </a>
-            </li>
-            <li>
-              <a className="text-on-surface-variant hover:text-primary transition-all text-sm font-medium" href="#">
-                Accessibility
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="col-span-1 text-on-surface-variant font-body-md text-sm">
-          <h4 className="font-title-lg text-primary font-bold mb-4">Contact Us</h4>
-          <p className="mb-1">123 Excellence Blvd, Suite 400</p>
-          <p className="mb-1">Phone: (555) 123-4567</p>
-          <p className="mt-4 text-xs text-outline">© 2024 Speech & Development Care Center.</p>
+        <div className="max-w-container-max mx-auto pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant font-body-md text-xs md:text-sm">
+          <p>© 2024 Speech & Development Care Center. All rights reserved.</p>
+          <div className="flex gap-6">
+            <a className="hover:text-primary transition-all" href="#">
+              Privacy Policy
+            </a>
+            <a className="hover:text-primary transition-all" href="#">
+              Terms of Service
+            </a>
+            <a className="hover:text-primary transition-all" href="#">
+              Accessibility
+            </a>
+          </div>
         </div>
       </footer>
     </div>
