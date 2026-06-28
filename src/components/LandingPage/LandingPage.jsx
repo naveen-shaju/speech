@@ -8,11 +8,11 @@ export default function LandingPage({ onBookAppointment }) {
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
     isManualScroll.current = true;
-    
+
     if (scrollTimeout.current) {
       clearTimeout(scrollTimeout.current);
     }
-    
+
     scrollTimeout.current = setTimeout(() => {
       isManualScroll.current = false;
     }, 1000);
@@ -21,7 +21,7 @@ export default function LandingPage({ onBookAppointment }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     const sections = ['hero', 'services', 'about', 'contact'];
-    
+
     const observerOptions = {
       root: null,
       rootMargin: '-50% 0px -50% 0px',
@@ -46,7 +46,7 @@ export default function LandingPage({ onBookAppointment }) {
 
     const handleScroll = () => {
       if (isManualScroll.current) return;
-      
+
       const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
       if (isAtBottom) {
         setActiveTab('contact');
@@ -79,38 +79,35 @@ export default function LandingPage({ onBookAppointment }) {
               src="/logo.jpeg"
             />
           </div>
-          
+
           {/* Desktop Navigation (Rendered on both mobile and desktop) */}
           <nav className="flex gap-3 sm:gap-6 md:gap-8 items-center ml-2 sm:ml-6 md:ml-12 lg:ml-24">
             <a
               onClick={() => handleTabClick('services')}
-              className={`font-title-lg text-[10px] sm:text-sm md:text-title-lg pb-0.5 md:pb-1 transition-all ${
-                activeTab === 'services'
-                  ? 'text-primary font-bold border-b-2 border-primary'
-                  : 'text-secondary hover:text-primary'
-              }`}
+              className={`font-title-lg text-[10px] sm:text-sm md:text-title-lg pb-0.5 md:pb-1 transition-all ${activeTab === 'services'
+                ? 'text-primary font-bold border-b-2 border-primary'
+                : 'text-secondary hover:text-primary'
+                }`}
               href="#services"
             >
               Services
             </a>
             <a
               onClick={() => handleTabClick('about')}
-              className={`font-title-lg text-[10px] sm:text-sm md:text-title-lg pb-0.5 md:pb-1 transition-all ${
-                activeTab === 'about'
-                  ? 'text-primary font-bold border-b-2 border-primary'
-                  : 'text-secondary hover:text-primary'
-              }`}
+              className={`font-title-lg text-[10px] sm:text-sm md:text-title-lg pb-0.5 md:pb-1 transition-all ${activeTab === 'about'
+                ? 'text-primary font-bold border-b-2 border-primary'
+                : 'text-secondary hover:text-primary'
+                }`}
               href="#about"
             >
               Expertise
             </a>
             <a
               onClick={() => handleTabClick('contact')}
-              className={`font-title-lg text-[10px] sm:text-sm md:text-title-lg pb-0.5 md:pb-1 transition-all ${
-                activeTab === 'contact'
-                  ? 'text-primary font-bold border-b-2 border-primary'
-                  : 'text-secondary hover:text-primary'
-              }`}
+              className={`font-title-lg text-[10px] sm:text-sm md:text-title-lg pb-0.5 md:pb-1 transition-all ${activeTab === 'contact'
+                ? 'text-primary font-bold border-b-2 border-primary'
+                : 'text-secondary hover:text-primary'
+                }`}
               href="#contact"
             >
               Contact
@@ -133,37 +130,37 @@ export default function LandingPage({ onBookAppointment }) {
             <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[80%] bg-secondary-container/30 rounded-full blur-[120px]"></div>
             <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[60%] bg-primary-fixed/20 rounded-full blur-[100px]"></div>
           </div>
-          <div className="relative z-10 w-full max-w-container-max mx-auto grid grid-cols-[1.2fr_0.8fr] md:grid-cols-2 gap-4 sm:gap-10 md:gap-16 lg:gap-20 items-center">
+          <div className="relative z-10 w-full max-w-container-max mx-auto grid grid-cols-[1.2fr_0.8fr] md:grid-cols-2 gap-2 sm:gap-10 md:gap-16 lg:gap-20 items-center">
             <div className="space-y-3 md:space-y-8 text-left">
-              <div className="inline-flex items-center gap-1 md:gap-2 bg-secondary-container px-2 md:px-4 py-0.5 md:py-1.5 rounded-full text-on-secondary-container font-label-sm uppercase tracking-widest text-[9px] md:text-xs font-semibold">
-                <span className="material-symbols-outlined text-[12px] md:text-[18px]">verified</span>
+              <div className="inline-flex items-center gap-0.5 sm:gap-2 bg-secondary-container px-1.5 sm:px-4 py-0.5 md:py-1.5 rounded-full text-on-secondary-container font-label-sm uppercase tracking-widest text-[7.5px] sm:text-xs font-semibold">
+                <span className="material-symbols-outlined text-[9px] sm:text-[18px]">verified</span>
                 Compassionate Clinical Care
               </div>
-              <h1 className="font-display-lg text-[22px] sm:text-4xl md:text-5xl lg:text-6xl text-primary leading-[1.1] md:leading-tight max-w-xl font-black">
+              <h1 className="font-display-lg text-[13px] sm:text-[22px] md:text-5xl lg:text-6xl text-primary leading-[1.1] md:leading-tight max-w-xl font-black">
                 Empowering Voice, <br />
                 <span className="text-tertiary">Connecting Minds,</span>
                 <br />
                 Nurturing Growth
               </h1>
-              <p className="font-body-md text-[12px] md:text-body-lg text-on-surface-variant max-w-lg leading-relaxed mx-0">
+              <p className="font-body-md text-[8px] sm:text-[12px] md:text-body-lg text-on-surface-variant max-w-lg leading-relaxed mx-0">
                 Dedicated, specialized support for speech, communication, and developmental milestones at every stage of life.
               </p>
-              <div className="flex gap-2 md:gap-4 justify-start">
+              <div className="flex gap-1.5 sm:gap-4 justify-start">
                 <button
                   onClick={onBookAppointment}
-                  className="bg-primary text-on-primary px-3 md:px-8 py-2 md:py-4 rounded-lg md:rounded-xl font-bold shadow-xl shadow-primary/25 hover:-translate-y-1 transition-all cursor-pointer text-[11px] md:text-base"
+                  className="bg-primary text-on-primary px-2 sm:px-6 py-1 sm:py-3 rounded-md sm:rounded-xl font-bold shadow-xl shadow-primary/25 hover:-translate-y-1 transition-all cursor-pointer text-[7.5px] sm:text-[11px] md:text-base"
                 >
                   Get Guided Care
                 </button>
                 <a
                   href="#services"
-                  className="flex items-center justify-center gap-1 md:gap-2 px-3 md:px-8 py-2 md:py-4 rounded-lg md:rounded-xl font-bold text-primary border border-outline-variant hover:bg-surface-container-low transition-all text-[11px] md:text-base"
+                  className="flex items-center justify-center gap-0.5 sm:gap-2 px-2 sm:px-6 py-1 sm:py-3 rounded-md sm:rounded-xl font-bold text-primary border border-outline-variant hover:bg-surface-container-low transition-all text-[7.5px] sm:text-[11px] md:text-base"
                 >
-                  <span className="material-symbols-outlined text-sm md:text-base">play_circle</span>
+                  <span className="material-symbols-outlined text-[10px] sm:text-base">play_circle</span>
                   How it works
                 </a>
               </div>
-              
+
               {/* Trust/Credibility Badges */}
               <div className="flex flex-row flex-nowrap items-center justify-between sm:justify-start gap-x-1 sm:gap-x-6 pt-4 sm:pt-6 border-t border-surface-variant/20 text-on-surface-variant text-[8px] sm:text-xs md:text-sm w-full">
                 <div className="flex items-center gap-1 sm:gap-2">
@@ -180,18 +177,18 @@ export default function LandingPage({ onBookAppointment }) {
                 </div>
               </div>
             </div>
-            
+
             <div className="relative group flex justify-start">
-              <div className="relative rounded-lg md:rounded-xl overflow-hidden shadow-xl md:shadow-2xl shadow-primary/10 max-w-lg w-full aspect-[3/4] md:aspect-auto">
+              <div className="relative rounded-lg md:rounded-xl overflow-hidden shadow-xl md:shadow-2xl shadow-primary/10 max-w-[140px] sm:max-w-[200px] md:max-w-lg w-full aspect-[3/4] md:aspect-auto ml-auto">
                 <img
                   alt="Speech & Development Care Center"
                   className="w-full h-full object-cover animate-fadeIn"
                   src="/hero.jpg"
                 />
               </div>
-              
+
               {/* Floating Card 1: 1200+ Families */}
-              <div className="absolute -bottom-3 -left-3 md:-bottom-10 md:-left-[120px] glass-card p-2 md:p-5 rounded-lg md:rounded-xl block max-w-[110px] md:max-w-[240px] scale-[0.65] md:scale-100 origin-bottom-left hover:-translate-y-1 transition-transform duration-300">
+              <div className="absolute -bottom-2 -left-6 sm:-left-12 md:-bottom-10 md:-left-[120px] glass-card p-1.5 sm:p-3 md:p-5 rounded-lg md:rounded-xl block max-w-[85px] sm:max-w-[130px] md:max-w-[240px] scale-[0.6] sm:scale-75 md:scale-100 origin-bottom-left hover:-translate-y-1 transition-transform duration-300">
                 <div className="hidden md:flex -space-x-1.5 md:-space-x-2.5 overflow-hidden mb-1.5 md:mb-3">
                   <div className="inline-flex h-4 w-4 md:h-8 md:w-8 rounded-full bg-primary-fixed-dim text-on-primary-fixed-variant items-center justify-center text-[6px] md:text-[10px] font-bold ring-1 md:ring-2 ring-white">ES</div>
                   <div className="inline-flex h-4 w-4 md:h-8 md:w-8 rounded-full bg-secondary-fixed text-on-secondary-fixed items-center justify-center text-[6px] md:text-[10px] font-bold ring-1 md:ring-2 ring-white">AM</div>
@@ -199,12 +196,12 @@ export default function LandingPage({ onBookAppointment }) {
                   <div className="inline-flex h-4 w-4 md:h-8 md:w-8 rounded-full bg-primary text-on-primary items-center justify-center text-[6px] md:text-[10px] font-bold ring-1 md:ring-2 ring-white">+</div>
                 </div>
                 <div className="flex items-center gap-1 md:gap-2 mb-1 md:mb-2">
-                  <div className="w-4 h-4 md:w-8 md:h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="material-symbols-outlined text-primary text-[10px] md:text-lg">diversity_3</span>
+                  <div className="w-3 h-3 sm:w-4 sm:h-4 md:w-8 md:h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="material-symbols-outlined text-primary text-[7px] sm:text-[10px] md:text-lg">diversity_3</span>
                   </div>
-                  <div className="font-bold text-[10px] md:text-[14px] text-primary">1,200+ Families</div>
+                  <div className="font-bold text-[7px] sm:text-[10px] md:text-[14px] text-primary">1,200+ Families</div>
                 </div>
-                <p className="text-on-surface-variant text-[8px] md:text-[12px] leading-tight md:leading-snug">
+                <p className="text-on-surface-variant text-[5.5px] sm:text-[8px] md:text-[12px] leading-tight md:leading-snug">
                   Supported through personalized developmental journeys this year.
                 </p>
               </div>
@@ -237,7 +234,7 @@ export default function LandingPage({ onBookAppointment }) {
                   "Every child’s voice deserves to be heard. My mission is to make sure no parent walks alone in that journey."
                 </p>
                 <p className="font-body-md text-[11px] md:text-base leading-relaxed">
-                  With 5 years of dedicated clinical experience, I am Divyashree — a passionate Speech-Language Pathologist committed to making a real difference in every child’s communication journey. I believe that behind every child struggling to speak, there is a parent who needs guidance, reassurance, and the right tools. Too many families are navigating this path without proper advice or therapy — and that is exactly the gap I built Communica to fill. My platform is a space where parents and caregivers are trained, counselled, and empowered to actively support their child’s growth at home — because when a parent understands their child’s needs, progress happens every single day. Every child matters here. Every milestone celebrated. Every family supported — one step at a time.
+                  With 5 years of dedicated clinical experience, I am Divyashree - a passionate Speech-Language Pathologist committed to making a real difference in every child’s communication journey. I believe that behind every child struggling to speak, there is a parent who needs guidance, reassurance, and the right tools. Too many families are navigating this path without proper advice or therapy - and that is exactly the gap I built Communica to fill. My platform is a space where parents and caregivers are trained, counselled, and empowered to actively support their child’s growth at home - because when a parent understands their child’s needs, progress happens every single day. Every child matters here. Every milestone celebrated. Every family supported one step at a time.
                 </p>
                 <div className="grid grid-cols-2 gap-3 md:gap-4 pt-1 md:pt-4">
                   <div className="flex items-center md:items-start gap-1.5 md:gap-3">
