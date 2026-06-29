@@ -136,7 +136,7 @@ export default function LandingPage({ onBookAppointment }) {
                 <span className="material-symbols-outlined text-[9px] sm:text-[18px]">verified</span>
                 Compassionate Clinical Care
               </div>
-              <h1 className="font-display-lg text-[13px] sm:text-[22px] md:text-5xl lg:text-6xl text-primary leading-[1.1] md:leading-tight max-w-xl font-black">
+              <h1 className="font-display-lg text-[15px] sm:text-[22px] md:text-5xl lg:text-6xl text-primary leading-[1.1] md:leading-tight max-w-xl font-black">
                 Empowering Voice, <br />
                 <span className="text-tertiary">Connecting Minds,</span>
                 <br />
@@ -145,18 +145,18 @@ export default function LandingPage({ onBookAppointment }) {
               <p className="font-body-md text-[8px] sm:text-[12px] md:text-body-lg text-on-surface-variant max-w-lg leading-relaxed mx-0">
                 Dedicated, specialized support for speech, communication, and developmental milestones at every stage of life.
               </p>
-              <div className="flex gap-1.5 sm:gap-4 justify-start">
+              <div className="flex gap-1 sm:gap-4 justify-start">
                 <button
                   onClick={onBookAppointment}
-                  className="bg-primary text-on-primary px-2 sm:px-6 py-1 sm:py-3 rounded-md sm:rounded-xl font-bold shadow-xl shadow-primary/25 hover:-translate-y-1 transition-all cursor-pointer text-[7.5px] sm:text-[11px] md:text-base"
+                  className="bg-primary text-on-primary px-1.5 sm:px-6 py-0.5 sm:py-3 rounded-md sm:rounded-xl font-bold shadow-xl shadow-primary/25 hover:-translate-y-1 transition-all cursor-pointer text-[6.5px] sm:text-[11px] md:text-base"
                 >
                   Get Guided Care
                 </button>
                 <a
                   href="#services"
-                  className="flex items-center justify-center gap-0.5 sm:gap-2 px-2 sm:px-6 py-1 sm:py-3 rounded-md sm:rounded-xl font-bold text-primary border border-outline-variant hover:bg-surface-container-low transition-all text-[7.5px] sm:text-[11px] md:text-base"
+                  className="flex items-center justify-center gap-[1px] sm:gap-2 px-1.5 sm:px-6 py-0.5 sm:py-3 rounded-md sm:rounded-xl font-bold text-primary border border-outline-variant hover:bg-surface-container-low transition-all text-[6.5px] sm:text-[11px] md:text-base"
                 >
-                  <span className="material-symbols-outlined text-[10px] sm:text-base">play_circle</span>
+                  <span className="material-symbols-outlined text-[8px] sm:text-base">play_circle</span>
                   How it works
                 </a>
               </div>
@@ -178,8 +178,8 @@ export default function LandingPage({ onBookAppointment }) {
               </div>
             </div>
 
-            <div className="relative group flex justify-start">
-              <div className="relative rounded-lg md:rounded-xl overflow-hidden shadow-xl md:shadow-2xl shadow-primary/10 max-w-[160px] sm:max-w-[220px] md:max-w-lg w-full aspect-[3/2] md:aspect-auto ml-auto">
+            <div className="relative max-w-[160px] sm:max-w-[220px] md:max-w-lg w-full aspect-[3/2] md:aspect-auto ml-auto group">
+              <div className="relative rounded-lg md:rounded-xl overflow-hidden shadow-xl md:shadow-2xl shadow-primary/10 w-full h-full">
                 <img
                   alt="Speech & Development Care Center"
                   className="w-full h-full object-cover animate-fadeIn"
@@ -188,7 +188,7 @@ export default function LandingPage({ onBookAppointment }) {
               </div>
 
               {/* Floating Card 1: 1200+ Families */}
-              <div className="absolute -bottom-2 -left-6 sm:-left-12 md:-bottom-10 md:-left-[120px] glass-card p-1.5 sm:p-3 md:p-5 rounded-lg md:rounded-xl block max-w-[85px] sm:max-w-[130px] md:max-w-[240px] scale-[0.6] sm:scale-75 md:scale-100 origin-bottom-left hover:-translate-y-1 transition-transform duration-300">
+              <div className="absolute -bottom-2 -left-6 sm:-left-12 md:-bottom-10 md:-left-[180px] glass-card p-1.5 sm:p-3 md:p-5 rounded-lg md:rounded-xl block max-w-[85px] sm:max-w-[130px] md:max-w-[240px] scale-[0.6] sm:scale-75 md:scale-100 origin-bottom-left hover:-translate-y-1 transition-transform duration-300">
                 <div className="hidden md:flex -space-x-1.5 md:-space-x-2.5 overflow-hidden mb-1.5 md:mb-3">
                   <div className="inline-flex h-4 w-4 md:h-8 md:w-8 rounded-full bg-primary-fixed-dim text-on-primary-fixed-variant items-center justify-center text-[6px] md:text-[10px] font-bold ring-1 md:ring-2 ring-white">ES</div>
                   <div className="inline-flex h-4 w-4 md:h-8 md:w-8 rounded-full bg-secondary-fixed text-on-secondary-fixed items-center justify-center text-[6px] md:text-[10px] font-bold ring-1 md:ring-2 ring-white">AM</div>
